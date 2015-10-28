@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+
+<script>
+    var myModel = new Backbone.Model(attributes, {options});
+    /*
+     attributes = {data:value, data:value} || [value,value]
+
+     options = {
+     collection: {},
+     url: '',
+     urlRoot: '',
+     parse: boolean
+     }
+     */
+
+
+    var myCollection = new Backbone.Collection(model(s), {options});
+    /*
+     models = model || [model,model,model] || {model:data} || [{model:data},{model:data}];
+
+     options = {
+     url: '',
+     model: {},
+     comparator: function(){} || ''
+     }
+     */
+
+
+    var myView = new Backbone.View({options});
+    /*
+     options = {
+     model: {},
+     events: {} or function(){return {}}
+     collection: {},
+     el: '' or function(){return ''},
+     id: '',
+     className: '' or function(){return ''},
+     tagName: '' or function(){return ''},
+     attributes: {attribute:value,attribute:value}
+     }
+     */
+
+
+    var myRouter = new Backbone.Router({options});
+    /*
+     options = {
+     routes:{}
+     }
+     */
+
+    /*还要注意历史选项*/
+    Backbone.History.start({options});
+    /*
+     options = {
+     pushState: boolean,
+     root: '',
+     hashChange: boolean,
+     silent: boolean
+     }
+     */
+</script>
+</body>
+</html>

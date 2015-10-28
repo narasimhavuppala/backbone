@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+<div id="urlPL"><strong>页面加载的URL:</strong><br><span></span></div>
+<br>
+
+<div id="url"><strong>当前URL:</strong><br><span></span></div>
+
+
+<script>
+    var myRouter = new Backbone.Router();
+
+    Backbone.history.start();
+
+    myRouter.route('search/:query/:filter1-:filter2/page:page', 'search', function (query, filter1, filter2, page) {
+        console.log(query, filter1, filter2, page);
+    });
+
+    //将url hash 改变为 #search/foo/today-newest/page1
+    window.location.hash = 'search/foo/today-newest/page1';
+
+    $('#url span').text(window.location.href);
+</script>
+</body>
+</html>

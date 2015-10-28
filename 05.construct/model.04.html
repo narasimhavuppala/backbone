@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="myModel">var myView = new Backbone.View();</div> <br />
+<div id="instance">myView Instance Properties: </div> <br />
+<div id="prototype">myView  Prototype Properties and Methods: </div>
+<script>
+    var myView = new Backbone.View();
+
+    console.log('var myView = new Backbone.View();');
+
+    console.log('myView Instance Properties:');
+    $('#instance').append(_.keys(myView));
+    console.log(_.keys(myView));
+
+    console.log('myView Inherited Properties & Methods:');
+    $('#prototype').append(_.keys(Object.getPrototypeOf(myView)));
+    console.log(_.keys(Object.getPrototypeOf(myView)));
+</script>
+</body>
+</html>

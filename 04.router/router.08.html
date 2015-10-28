@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+<div id="urlPL"><strong>页面加载的URL:</strong><br><span></span></div>
+<br>
+
+<div id="url"><strong>当前URL:</strong><br><span></span></div>
+
+
+<script>
+    var myRouter = new Backbone.Router();
+
+    Backbone.history.start();
+
+    myRouter.route('*anyURL','anyURL',function(){
+        console.log('called anytime the url changes to any url path');
+    });
+
+    //将url hash更改为"#foo"
+    window.location.hash = 'foo';
+    //将url hash更改为"#foo/boo/bar?coo=too&noo=loo"
+    setTimeout(function(){window.location.hash = 'qa';},2000);
+
+    $('#url span').text(window.location.href);
+</script>
+</body>
+</html>

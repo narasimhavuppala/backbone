@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="model1"></div>
+<div id="model2"></div>
+<script>
+
+    var contact = new Backbone.Model(); //实例化模型实例
+    //设置/编辑数据
+    contact.set({firstName: "John", lastName: 'Doe', phone: '1-111-1111'});
+    //拥有firstName属性，注意，无论属性值为何都将返回true
+    console.log(contact.has('firstName')); //日志 true
+    //获取数据
+    console.log(contact.get('firstName')); //日志 John
+
+
+    if (contact.has('firstName')) {
+        $('#model1').append('联系人有名字，她的名字是：' + contact.get('firstName'));
+    }
+
+
+    //复原数据
+    contact.unset('lastName');
+    //验证数据已被复原
+    console.log(contact.has('lastName')); //日志 false
+
+
+    if (!contact.has('lastName')) {
+        $('#model2').append('联系人没有姓氏');
+    }
+
+    //清除所有数据
+    contact.clear();
+    //验证数据已被清除
+    console.log(contact.attributes); //日志 empty {}
+
+
+</script>
+</body>
+</html>

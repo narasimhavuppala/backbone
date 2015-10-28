@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="model1"></div>
+<div id="model2"></div>
+<div id="model3"></div>
+<div id="model4"></div>
+<script>
+
+    var contact = new Backbone.Model({
+        firstName:'John',lastName:'Doe',phone:'1-111-1111'
+    });
+
+    //返回数据的数组/属性键
+    console.log(contact.keys()); //日志 ["firstName", "lastName", "phone"]
+    $('#model1').append('返回的key值：' + contact.keys());
+
+    //返回数据的数组/属性值
+    console.log(contact.values()); //日志 ["John", "Doe", "1-111-1111"]
+    $('#model2').append('返回的值：' + contact.values());
+
+    //复制数据/属性对象,返回包含选中键的对象
+    console.log(contact.pick('phone')); //日志 {phone="1-111-1111"}
+    $('#model3').append('copy数据属性对象，返回只有phone的key值：' + contact.pick('phone').phone);
+
+    //复制数据/属性对象,返回不包含选中键的对象
+    console.log(contact.omit('firstName','lastName')); // 日志 {phone="1-111-1111"}
+    $('#model4').append('copy数据属性对象，忽略firstname和lastnamekey值：' + contact.omit('firstName','lastName').phone);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+
+    //利用Backbone.Events方法继承A对象
+    var A = _.extend({name:'A'}, Backbone.Events);
+    var B = {name:'B'};
+
+    //当事件A调用,设置回调文本(this)为B
+    A.on('sayMyName', function () {
+        console.log(this.name);
+        $('#say').text(this.name);
+    }, B);
+
+    //触发sayMyName
+    A.trigger('sayMyName'); //日志B，因为回调文本被修改了
+</script>
+</body>
+</html>

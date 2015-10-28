@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="status">初始化状态：</div>
+<br/>
+
+<div id="subView">subView:</div>
+<br/>
+
+<div id="myView">myView Instance:</div>
+<br/>
+
+
+<script>
+    var myModel = Backbone.Model.extend({
+        initialize: function (a, b, number) {
+            console.log(a, b, number)
+        }, //log paramaters
+    });
+    new myModel({a: 'a'}, {b: 'b'}, 1); //传递属性，可选项和随机参数
+</script>
+
+</body>
+</html>

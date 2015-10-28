@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+<div id="container">
+    <button type="button" value="load"></button>
+    <ul id="list">
+        <div id="list-template">
+            <li>
+                <a href=""></a>
+            </li>
+        </div>
+    </ul>
+</div>
+
+
+<script>
+    // 一个简单的模型
+    var Links = Backbone.Model.extend({
+        data: [
+            {text: "Google", href: "http://google.com"},
+            {text: "Facebook", href: "http://facebook.com"},
+            {text: "Youtube", href: "http://youtube.com"}
+        ]
+    });
+    var View = Backbone.View.extend({
+        initialize: function (options) {
+            console.log(options.blankOption);
+            // this.tagName --> create a "tagName" item in the DOM
+            $('body').append(this.el)
+        }
+    });
+
+    var view = new View({tagName: 'div', className: 'class', id: '', attributes: ''}); // --> creates a div tag with class "class"
+
+</script>
+</body>
+</html>

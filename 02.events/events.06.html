@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+
+    //利用Backbone.Events方法继承A对象
+    var A = _.extend({name: 'A'}, Backbone.Events);
+
+
+    A.on('say:hi', function () {
+        console.log('Hi');
+        $("#say").append('Hi! ');
+    });
+    A.on('say:hello', function () {
+        console.log('Hello');
+        $("#say").append('Hello! ');
+    });
+
+    //触发say:hi和say:hello,注意我用同一个触发调用了两个事件
+    A.trigger('say:hi say:hello');
+    //下面这样写不能同时触发两个事件
+    A.trigger('say');
+</script>
+</body>
+</html>

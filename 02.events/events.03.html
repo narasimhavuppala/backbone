@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+
+    //利用Backbone.Events方法继承A对象
+    var A = _.extend({name: 'A'}, Backbone.Events);
+
+    //当事件被触发时添加一个事件A让回调函数被调用
+    A.on('whatsMyName', function () {
+        console.log(this.name); //this is A
+    });
+
+    //在对象A触发whatsMyName事件,日志A
+    A.trigger('whatsMyName');
+
+    /*参考通过on()的单一对象包含多个事件和回调的可能
+     A.o{ callback1 : function(){}, callback2 : function() });
+     */
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+<div id="urlPL"><strong>页面加载的URL:</strong><br><span></span></div>
+<br>
+
+<div id="url"><strong>当前URL:</strong><br><span></span></div>
+
+
+<script>
+    //创建一个Backbone Router
+    var myRouter = new Backbone.Router();
+
+    //创建初始路由
+    myRouter.route('','initialroute',function(){
+        console.log('The intital route has been invoked');
+    });
+
+    //让Backbone开始监听在url上的改变，运行初始路由
+    Backbone.history.start();
+
+    //展示url外观:
+    $('#url span').text(window.location.href);
+</script>
+</body>
+</html>

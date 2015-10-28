@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+
+    //利用Backbone.Events方法继承B对象
+    var B = _.extend({}, Backbone.Events);
+    var C = {}
+
+    B.on('logFoo',function () {
+        console.log('foo');
+    },C);
+
+    B.on('logBar',function () {
+        console.log('bar');
+    },C);
+
+    B.trigger('logFoo logBar'); //日志 后台输出foo以及bar
+    B.off(null,null,C); //删除包含C文本的所有事件
+    B.trigger('logFoo logBar'); //日志无,因为所有包含C文本的事件被删除了
+</script>
+</body>
+</html>

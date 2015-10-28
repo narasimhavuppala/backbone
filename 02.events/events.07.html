@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+
+    //利用Backbone.Events方法继承A对象
+    var A = _.extend({name: 'A'}, Backbone.Events);
+
+    A.on('say', function (options) {
+        console.log(options[0]);
+        console.log(options[1]);
+
+        $('#say').append(options[0]);
+        $('#say').append(options[1]);
+    });
+
+    //在A触发say事件,同一行中给回调函数传递了两个字符串
+    A.trigger('say', ['Hello', 'Good Bye']);
+</script>
+</body>
+</html>

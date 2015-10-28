@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="myModel">我的模型：</div>
+<br/>
+
+<div id="myView">myView Instance:</div>
+<br/>
+<script>
+
+    var subModel = Backbone.Model.extend({
+        constructor:function(){ //继承这个构造函数,而不是Model
+            this.goo = 'boo';
+            Backbone.Model.apply(this, arguments); //添加Model实例属性
+        }
+    });
+
+    myModel = new subModel();
+
+    console.log(myModel.goo); //日志 boo
+    console.log(myModel.cid); //日志 c1, cid是一个Model实例属性
+</script>
+</body>
+</html>

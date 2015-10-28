@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+<div id="container">
+    <button type="button" value="load"></button>
+    <ul id="list">
+        <div id="list-template">
+            <li>
+                <a href=""></a>
+            </li>
+        </div>
+    </ul>
+</div>
+
+
+<script>
+    // 一个简单的模型
+    var Links = Backbone.Model.extend({
+        data: [
+            {text: "Google", href: "http://google.com"},
+            {text: "Facebook", href: "http://facebook.com"},
+            {text: "Youtube", href: "http://youtube.com"}
+        ]
+    });
+    var View = Backbone.View.extend({
+        initialize: function () {
+            // do nothing
+           // this.render();// 会调用两次render
+        },
+        el: '#container',
+        events: {
+            "click button": "render"
+        },
+        render: function () { // 通常这个方法被Backbone调用
+            var data = this.model.data;
+
+
+            for (var i = 0, l = data.length; i < l; i++) {
+                var li = this.template
+                        .clone()
+                        .find('a')
+                        .attr('href', data[i].href)
+                        .text(data[i].text)
+                        .end();
+                this.$el // <-- this.$el 是视图元素的jQuery对象, this.el 是DOM对象
+                        .find('ul#list').append(li);
+            }
+        }
+    });
+
+    var view = new View({model: new Links()});
+    console.info(view.model.data);
+</script>
+</body>
+</html>

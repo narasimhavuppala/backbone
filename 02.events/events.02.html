@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+
+    //创建一个eavesdropper对象，用Backbone.Events继承对象
+    var A = _.extend({name: 'A'}, Backbone.Events);
+
+    //验证A是否被Backbone.Events方法继承
+    console.log(Object.keys(A));
+
+    $('#say').text(Object.keys(A));
+
+    /*上述日志:
+
+     ["name", "on", "once", "off", "trigger", "stopListening", "listenTo", "listenToOnce", "bind", "unbind"]
+     */
+</script>
+</body>
+</html>

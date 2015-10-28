@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="status">初始化状态：</div>
+<br/>
+
+<div id="subView">subView:</div>
+<br/>
+
+<div id="myView">myView Instance:</div>
+<br/>
+
+
+<script>
+    var subModel = Backbone.Model.extend({
+        constructor: function () { //extend this constructor, not Model
+            this.foo = 'bar';
+        }
+    });
+
+    myModel = new subModel();
+
+    console.log(myModel.foo); //日志 bar
+
+    /*cid由Model构造函数设置的一个实例属性，但是日志未定义
+     因为我们创建了我们自己的构造函数*/
+
+
+    console.log(myModel.cid);
+
+    /*cid属性是由Model()设置的一个实例属性，我们没有使用Model
+     我们使用的是一个自定义的构造函数，所以myModel没有cid属性*/
+</script>
+
+</body>
+</html>

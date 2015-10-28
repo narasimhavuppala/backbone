@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="status">初始化状态：</div>
+<div id="subView">subView:</div>
+<br/>
+
+<div id="myView">myView Instance:</div>
+<br/>
+<script>
+
+    var myModel = Backbone.Model.extend({
+        /*the context of the initizlie function is set
+         to the instance object being created.*/
+
+        //log the properties in this/instance
+        initialize:function(){
+            console.log(_.keys(this));
+            console.log(_.keys(this.constructor.prototype)); //where you'll find name
+        },
+        name:'myModel'
+    });
+
+    //创建一个实例，验证初始化被调用
+    new myModel;
+</script>
+</body>
+</html>

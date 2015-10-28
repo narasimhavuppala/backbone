@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="model1"></div>
+<div id="model2"></div>
+<script>
+
+    var ContactModel = Backbone.Model.extend({ //extend Backbone.Model
+        getFullName:function(){
+            return this.get('firstName') +' '+ this.get('lastName');
+        }
+    });
+
+    var contact1Model = new ContactModel( //instantiate ContactModel instance
+            {firstName:'John',lastName:'Doe',phone:'111-111-1111'}
+    );
+
+    var contact2Model = new ContactModel( //instantiate ContactModel instance
+            {firstName:'Jane',lastName:'Doe',phone:'222-222-2222'}
+    );
+
+    //在我们的模型上调用getFullName方法
+    console.log(contact1Model.getFullName()); //logs John Doe
+    console.log(contact2Model.getFullName()); //logs Jane Doe
+
+</script>
+</body>
+</html>

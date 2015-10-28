@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Model</title>
+</head>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+
+<script>
+    var Router = Backbone.Router.extend({
+        routes: {
+            // 这个会匹配任何url是符合foo/<param>的，并且提供:bar: 作为参数，传输到paramtest方法中
+            // : 会匹配下一个URI
+            // 所以#foo/1 会调用paramtest(1)
+            "foo/:bar": "paramtest",
+
+            //会匹配全部剩下的URI, 所以 #a/b/c 会调用 func("a/b/c")
+            "*action": "func"
+        },
+        func: function (action) {
+            console.log(action);
+        },
+        paramtest: function (p) {
+            console.log(p);
+        }
+    });
+
+    new Router();
+
+    Backbone.history.start();
+</script>
+</body>
+</html>

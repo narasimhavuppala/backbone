@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+<div id="urlPL"><strong>页面加载的URL:</strong><br><span></span></div>
+<br>
+
+<div id="url"><strong>当前URL:</strong><br><span></span></div>
+
+
+<script>
+    //创建一个Backbone Router
+    var myRouter = new Backbone.Router();
+
+    //利用路由方法创建一个帮助路由, route(route, name, callback-function)
+    myRouter.route('help', 'help', function () {
+        console.log('The url hash just change to /#help');
+    });
+
+    //将url hash更改为"#help",但Backbone不做变化
+    window.location.hash = 'help';
+
+    //让Backbone开始监听在url上的改变
+    Backbone.history.start();
+
+    //将url hash更改为"#help", 现在路由可以工作了!
+    window.location.hash = 'help';
+</script>
+</body>
+</html>

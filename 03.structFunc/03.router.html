@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+<div id="myModel">new Backbone.Model();</div> <br />
+<div id="instance">myModel Instance Properties: </div> <br />
+<div id="prototype">myModel Prototype Properties and Methods: </div>
+
+
+<script>
+    var myRouter = new Backbone.Router({routes:{'foo':'bar'},bar:function(){}});
+
+
+    console.log('var myRouter = new Backbone.Router();');
+
+    console.log('myRouter Instance Properties:');
+    $('#instance').append(_.keys(myRouter));
+    console.log(_.keys(myRouter));
+
+    console.log('myRouter prototype Properties & Methods:');
+    $('#prototype').append(_.keys(Object.getPrototypeOf(myRouter)));
+    console.log(_.keys(Object.getPrototypeOf(myRouter)));
+
+
+</script>
+
+</body>
+</html>

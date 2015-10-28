@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+<div id="urlPL"><strong>页面加载的URL:</strong><br><span></span></div>
+<br>
+
+<div id="url"><strong>当前URL:</strong><br><span></span></div>
+
+
+<script>
+    var myRouter = new Backbone.Router();
+
+    Backbone.history.start();
+
+    myRouter.route(/(help|support|answers|qa)/,'help',function(){
+        console.log('The url hash just change to /#help');
+        $('#url').append('The url hash just change to /#help <br />');
+    });
+
+    //change url hash to "#help"
+    window.location.hash = 'help';
+    //change url hash to "#qa"
+    setTimeout(function(){window.location.hash = 'qa';},2000);
+    //hange url hash to "#support"
+    setTimeout(function(){window.location.hash = 'support';},4000);
+
+    $('#url span').text(window.location.href);
+</script>
+</body>
+</html>

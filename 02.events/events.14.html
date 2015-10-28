@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+
+    //利用Backbone.Events方法继承对象A和对象B
+    var A = _.extend({name: 'A'}, Backbone.Events);
+    var B = _.extend({name: 'B'}, Backbone.Events);
+
+    var whosListeningToMe = function () {
+        console.log(this.name);
+    };
+
+    //让对象B监听对象A上被触发的whosListeningToMe事件,然后调用whosListeningToMe
+    B.listenTo(A, 'whosListeningToMe', whosListeningToMe);
+
+    A.trigger('whosListeningToMe'); //日志 B
+    /*
+     对象A没有whosListeningToMe事件,但这个事件能够通告监听者它已经被触发
+     */
+</script>
+</body>
+</html>

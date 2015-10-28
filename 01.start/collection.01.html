@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Model</title>
+</head>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+
+
+<script>
+    var Person = Backbone.Model.extend({
+        // initialize在我们创建Person对象时被调用
+        initialize: function () {
+            console.log('Person is initialized.');
+        },
+
+        // 默认属性
+        defaults: {
+            name: 'undefined',
+            age: 'undefined'
+        }
+    });
+
+    // 创建集合!
+    var People = Backbone.Collection.extend({
+        // 当集合被创建时调用
+        initialize: function () {
+            console.log("People Collection is initialized");
+        },
+
+        // 定义存入集合的数据模型
+        model: Person
+    });
+
+    // 创建一个新的Person对象
+    var person = new Person({name: "Joe"});
+
+    // 建立一个集合，然后将Person对象加入这个集合中
+    var people = new People(person);
+    people.add([{name: "Bob"}, {name: "Jim"}]);
+
+    // 在控制台中，打出这个数据模型的数据
+    console.log(people.toJSON());
+</script>
+</body>
+</html>

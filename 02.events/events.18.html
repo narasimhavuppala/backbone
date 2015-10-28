@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+    var A = _.extend({name: 'A'}, Backbone.Events);
+    var B = _.extend({name: 'B'}, Backbone.Events);
+
+    var whosListeningToMe =
+            function () {
+                console.log(this.name);
+                $('#say').append(this.name);
+            };
+
+    var whosListeningToMeAgain =
+            function () {
+                console.log(this.name);
+                $('#say').append(this.name + " - ");
+            };
+
+    B.listenTo(A, 'whosListeningToMe', whosListeningToMe);
+    B.listenTo(A, 'whosListeningToMe', whosListeningToMeAgain);
+
+    A.trigger('whosListeningToMe');
+
+    B.stopListening(A, 'whosListeningToMe', whosListeningToMeAgain);
+
+    A.trigger('whosListeningToMe');
+</script>
+</body>
+</html>

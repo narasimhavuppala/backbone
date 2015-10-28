@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="status">初始化状态：</div>
+<br/>
+
+<div id="subView">subView:</div>
+<br/>
+
+<div id="myView">myView Instance:</div>
+<br/>
+
+
+<script>
+    var myModel = Backbone.Model.extend({
+
+        initialize:function(){
+            console.log(_.keys(this));
+            $('#subView').append(_.keys(this));
+            console.log(_.keys(this.constructor.prototype));
+            $('#myView').append(_.keys(this.constructor.prototype));
+        },
+        name:'myModel'
+    });
+
+    new myModel();
+</script>
+
+</body>
+</html>

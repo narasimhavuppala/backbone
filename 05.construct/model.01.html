@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+<div id="myModel">new Backbone.Model();</div> <br />
+<div id="instance">myModel Instance Properties: </div> <br />
+<div id="prototype">myModel Prototype Properties and Methods: </div>
+<script>
+    var myModel = new Backbone.Model();
+    console.log("myModel = new Backbone.Model();");
+
+    console.log('myModel Instance Properties:');
+    $('#instance').append(_.keys(myModel));
+    console.log(_.keys(myModel));
+
+    console.log('myModel Prototype Properties & Methods:');
+    console.log(_.keys(Object.getPrototypeOf(myModel)));
+    $('#prototype').append(_.keys(Object.getPrototypeOf(myModel)));
+</script>
+</body>
+</html>

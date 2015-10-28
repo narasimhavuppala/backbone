@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<body>
+
+<div id="say">Say Hi!</div>
+
+<script>
+    //创建一个默认的模型对象
+    var myModel = new Backbone.Model();
+
+    //绑定一个回调对象到嵌入'all'事件
+    myModel.on('all', function (e) {
+        console.log(e);
+    });
+
+    //触发‘change'和‘change:attribute'事件,就会触发all两次
+    myModel.set({'test': 'test'});
+
+    /*利用listenTo()可以达到相同的效果
+     var A = _.extend({}, Backbone.Events);
+
+     A.listenTo(myModel, 'all', function (e) {
+     console.log(e);
+     });
+     */
+</script>
+</body>
+</html>
