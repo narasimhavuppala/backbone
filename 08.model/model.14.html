@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="model1"></div>
+<div id="model2"></div>
+<div id="model3"></div>
+<div id="model4"></div>
+<script>
+
+    var ContactModel = Backbone.Model.extend({ //extend Backbone.Model
+        validate :function(attributes,options){
+            var phone = /\(?\d{3}\W?\s?\d{3}\W?\d{4}/.test(attributes.phone);
+            var firstName = /^[A-Z]'?[a-zA-Z]+(-[a-zA-Z]+)?$/.test(attributes.firstName);
+            var lastName = /^[A-Z]'?[a-zA-Z]+(-[a-zA-Z]+)?$/.test(attributes.lastName);
+            if(!phone || !firstName || !lastName){
+                return 'Setting, Saving, Or Seeding Invalid Data'
+            }
+        },
+        initialize:function(){
+            //运行验证, 如果无效将输出信息
+            if(!this.isValid()){console.log(this.validationError)}
+        }
+    });
+    var contact1Model = new ContactModel({ //validate seeded data
+        firstName:'jo234 hn',lastName:'ao321-- e',phone:'111-1111-111111'
+    });
+
+
+
+</script>
+</body>
+</html>

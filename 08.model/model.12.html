@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="model1"></div>
+<div id="model2"></div>
+<div id="model3"></div>
+<div id="model4"></div>
+<script>
+
+
+    var contact = new Backbone.Model({
+        firstName:'John',lastName:'Doe',phone:0
+    });
+
+    contact.validate = function(attributes,options){
+        var validPhone = /\(?\d{3}\W?\s?\d{3}\W?\d{4}/.test(attributes.phone);
+        if(!validPhone){
+            return 'Setting or Saving Invalid Phone Number Attempted';
+        }
+    };
+
+    contact.set('phone','111-111-1111',{validate:true}); //set
+    contact.set('phone','111-1-1111',{validate:true}); //不会set,验证失败
+
+    console.log(contact.get('phone')); //没有无效的电话号码
+    console.log(contact.validationError); //读取最后一个验证错误
+</script>
+</body>
+</html>

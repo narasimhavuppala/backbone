@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/underscore.js"></script>
+    <script src="../lib/backbone.js"></script>
+</head>
+<body>
+
+<div id="model1"></div>
+<div id="model2"></div>
+<div id="model3"></div>
+<div id="model4"></div>
+<script>
+
+    //创建联系模型,用数据实例化模型时并没有change事件被激活
+    var contact=new Backbone.Model({firstName:'John',lastName:'Doe',phone:'1-111-1111'});
+
+    //做出一个改变
+    contact.set({phone:'2-222-2222'});
+
+    //验证一个变化已经发生
+    console.log(contact.hasChanged()); //logs true
+
+    //获取已改变的属性
+    console.log(contact.changedAttributes()); //logs {phone="2-222-2222"}
+</script>
+</body>
+</html>
